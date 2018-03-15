@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<commonRoad benchmarkID="Test_Road" commonRoadVersion="2017a" date="24-Nov-2017" timeStepSize="0.1">
+    <lanelet id="1">
+        <leftBound>
+            <point>
+                <x>0</x>
+                <y>3</y>
+            </point>
+            <point>
+                <x>100</x>
+                <y>3</y>
+            </point>
+        </leftBound>
+        <rightBound>
+            <point>
+                <x>0</x>
+                <y>0</y>
+            </point>
+            <point>
+                <x>100</x>
+                <y>0</y>
+            </point>
+        </rightBound>
+        <adjacentLeft drivingDir="same" ref="2"/>
+        <successor ref='3'/>
+        <speedLimit>28</speedLimit>
+    </lanelet>
+    <lanelet id="2">
+        <!--left hand side of the road boundary-->
+        <leftBound>
+            <point>
+                <x>0</x>
+                <y>6</y>
+            </point>
+            <point>
+                <x>100</x>
+                <y>6</y>
+            </point>
+        </leftBound>
+        <!--right hand side of the road boundary-->
+        <rightBound>
+            <point>
+                <x>0</x>
+                <y>3</y>
+            </point>
+            <point>
+                <x>100</x>
+                <y>3</y>
+            </point>
+        </rightBound>
+        <adjacentRight drivingDir="same" ref="1"/>
+        <speedLimit>28</speedLimit>
+    </lanelet>
+    <lanelet id="3">
+        <leftBound>
+            <point>
+                <x>100</x>
+                <y>3</y>
+            </point>
+            <point>
+                <x>150</x>
+                <y>3</y>
+            </point>
+        </leftBound>
+        <rightBound>
+            <point>
+                <x>100</x>
+                <y>0</y>
+            </point>
+            <point>
+                <x>150</x>
+                <y>0</y>
+            </point>
+        </rightBound>
+        <predecessor ref='1'/>
+        <speedLimit>28</speedLimit>
+    </lanelet>
+    <!--<planningProblem id="8">-->
+    <!--<initialState>-->
+      <!--<position>-->
+        <!--<point>-->
+          <!--<x>1.5</x>-->
+          <!--<y>1.5</y>-->
+        <!--</point>-->
+      <!--</position>-->
+      <!--<orientation>-->
+        <!--<exact>0</exact>-->
+      <!--</orientation>-->
+      <!--<velocity>-->
+        <!--<exact>25</exact>-->
+      <!--</velocity>-->
+      <!--<yawRate>-->
+        <!--<exact>0</exact>-->
+      <!--</yawRate>-->
+      <!--<slipAngle>-->
+        <!--<exact>0</exact>-->
+      <!--</slipAngle>-->
+      <!--<time>-->
+        <!--<exact>0</exact>-->
+      <!--</time>-->
+    <!--</initialState>-->
+    <!--<goalRegion>-->
+       <!--<state>-->
+          <!--<position>-->
+             <!--<rectangle>-->
+                <!--<length>4</length>-->
+                <!--<width>4</width>-->
+                <!--<orientation>0.0</orientation>-->
+                <!--<center>-->
+                   <!--<x>90.0</x>-->
+                   <!--<y>1.5</y>-->
+                <!--</center>-->
+             <!--</rectangle>-->
+          <!--</position>-->
+          <!--<time>-->
+             <!--<intervalStart>0.0</intervalStart>-->
+             <!--<intervalEnd>200.0</intervalEnd>-->
+          <!--</time>-->
+       <!--</state>-->
+    <!--</goalRegion>-->
+  <!--</planningProblem>-->
+</commonRoad>

@@ -1,0 +1,20 @@
+src/gz designated_driver_base http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/base
+#src/gz designated_driver_kernel http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/kernel
+#src/gz designated_driver_telephony http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/telephony
+src/gz designated_driver_packages http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/packages
+src/gz designated_driver_routing http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/routing
+src/gz designated_driver_luci http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/luci
+#src/gz designated_driver_management http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/management
+#src/gz designated_driver_targets http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/packages/targets
+
+http://downloads.openwrt.org/snapshots/trunk/ar71xx/generic/md5sums
+
+def grad_1(x, h=0.1):
+    x_1 = np.copy(x[:-2])
+    x_2 = np.copy(x[2:])
+    return 0.5*(x_2 - x_1)/h
+
+def grad_2(x, h=0.1):
+    x_1 = np.copy(x[:-2])
+    x_2 = np.copy(x[2:])
+    return 0.5*(x_2 - x_1)/h

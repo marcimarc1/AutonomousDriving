@@ -1,0 +1,148 @@
+import matplotlib.pyplot as plot
+import numpy as np
+import nlopt as nl
+import pickle
+from scipy.optimize import minimize
+import matplotlib.pyplot as plt
+
+pickle_in = open('trajectory.p','rb')
+trajectory = pickle.load(pickle_in)
+pickle_in.close()
+states = np.array([s['position'] for s in trajectory], dtype='float64')
+
+final_state= np.array([ 88.42461487 ,  3.71419864])
+
+h = 1
+vdes = 28
+
+def euclid_dist(a,b,axis=1):
+    return np.linalg.norm((a - b), axis=axis)
+
+def grad(x, nth=1, n=2, h=1):
+    ds = [{
+        'grad': x,
+        'grad_mag': x
+    }]
+    for i in range(nth):
+        _x = ds[-1]['grad_mag']
+        grad = np.array(np.gradient(_x))
+        grad_mag = np.array(grad)
+        # print(grad.shape)
+        if(n > 1):
+            grad_mag = np.linalg.norm(grad, axis=0)
+        ds.append({
+            'grad': grad,
+            'grad_mag': grad_mag
+        })
+    return ds[-1]['grad_mag'], ds[-1]['grad'], ds
+
+def psi(x):
+    return np.arctan2(np.gradient(x[:,0]),np.gradient(x[:,1]))
+
+def kappa(x):
+    _, _, dxs = grad(x[:,0], 2)
+    _, _, dys = grad(x[:,1], 2)
+    den = np.power(np.add(dxs[1]['grad_mag'],dys[2]['grad_mag']),-3)
+    num = np.subtract(np.multiply(dxs[1]['grad_mag'],dys[2]['grad_mag']), np.multiply(dys[1]['grad_mag'],dxs[2]['grad_mag']))
+    return np.divide(num, den)
+
+def dist_to_f(x):
+    print((x - final_state).shape)
+    return np.linalg.norm((x - final_state))
+
+def calculatevdes(x):
+    left = np.array(x)
+    right = np.array(x)
+    left[:,1] = 2.5
+    right[:,1] = 0
+    x_norm =  np.linalg.norm(x,axis=1)
+    delta_d_l = np.divide(np.subtract(x,left),x_norm[:,np.newaxis])
+    delta_d_r = np.divide(np.subtract(x,left),x_norm[:,np.newaxis])
+    return np.matmul(vdes * np.array([[0,-1], [1,0]], dtype='float64'),  
+                     0.5 * (np.add(delta_d_l,delta_d_r).T)).T
+
+def joffs(x):
+    left = np.array(x)
+    right = np.array(x)
+    left[:,0] = 2.5
+    right[:,0] = 0
+    dleft = euclid_dist(x,left)
+    dright = euclid_dist(x, right)
+    return np.abs(0.5 * (dleft + dright))**2
+
+def jvel(x):
+    d,_,_ = grad(x)
+    udes = calculatevdes(x)
+    # print(d.shape)
+    # print(udes.shape)
+    return np.linalg.norm(np.subtract(calculatevdes(x), d), axis=1)
+
+def jacc(x):
+    d,_,_ = grad(x, 2)
+    return np.power(np.abs(np.linalg.norm(d, axis=1)),2)
+
+def jjerk(x):
+    d,_,_ = grad(x, 3)
+    return np.power(np.abs(np.linalg.norm(d, axis=1)),2)
+
+def jyawr(x):
+    d,_,_ = grad(psi(x),nth=1,n=1)
+    return np.power(d,2)
+
+nl_opt = []
+_js = []
+def bertha_obj(x):
+    x = np.reshape(x, (len(x)//2, 2)) # scipy flattens array
+    
+    nl_opt.append(x)
+    w = np.array([10., 1. , 2., 1., 2.,100.])
+    _joffs = joffs(x)
+    # print(_joffs.shape)
+    _jvel = jvel(x)
+    # print(_jvel.shape)
+    _jacc = jacc(x)
+    # # print(_jacc.shape)
+    _jjerk = jjerk(x)
+    # # print(_jjerk.shape)
+    _jyawr = jyawr(x)
+    _jdist = dist_to_f(x)
+    j = np.array([_joffs,_jvel,_jacc,_jjerk,_jyawr,_jdist])
+    _js.append(j)
+    cost = np.sum(np.dot(w.T,j))
+    return cost
+
+kmax = np.pi / 2.
+amax = 5
+def kappa_constraint(x):
+    x = np.reshape(x, (len(x)//2, 2))
+    # print(x.shape)
+    # −κmax ≤ κ(t) ≤ κmax.
+    # TODO: get κmax from vehicle model.
+    return (np.abs(kappa(x)) - kmax).flatten()
+
+def acc_constraint(x):
+    x = np.reshape(x, (len(x)//2, 2))
+    # TODO: get acc from scenario
+    acc,_,_ = grad(x, nth=2, n=2)
+    return (amax - acc).flatten()
+
+# bnd = (1.0,5.0)
+# bnds= (bnd,bnd,bnd,bnd)
+con1 = {'type':'ineq', 'fun': kappa_constraint}
+con2 = {'type':'ineq', 'fun': acc_constraint}
+cons = [con1,con2]
+x0 = np.array(states).flatten()
+sol = minimize(bertha_obj, x0, method='SLSQP', bounds=None, constraints=cons)
+print(sol)
+xf = np.reshape(sol.x, (51,2))
+print(np.array(nl_opt).shape)
+plt.figure()
+x0_c = np.reshape(x0,(51,2))
+plt.plot(x0_c[:,0], x0_c[:,1], 'x')
+plt.plot(xf[:,0], xf[:,1], 'x')
+# _js=np.array(_js)
+# plt.plot(_js[:,0], np.arange(len(_js)), 'x')
+
+# plt.plot(nl_opt[1][:,0], nl_opt[1][:,1], 'x')
+# plt.plot(nl_opt[2][:,0], nl_opt[2][:,1], 'x')
+plt.show()

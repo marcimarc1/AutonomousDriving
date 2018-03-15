@@ -1,0 +1,883 @@
+%% bare_conf.tex
+%% V1.4
+%% 2012/12/27
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8 or later) with an IEEE conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex,
+%%                    bare_jrnl_transmag.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[conference]{IEEEtran}
+% Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% For directly writing german umlauts uncomment the appropriate line for
+% your operating system:
+% Windows:
+% \usepackage[ansinew]{inputenc}
+% Linux:
+\usepackage[latin1]{inputenc}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\makeatletter
+\def\BState{\State\hskip-\ALG@thistlm}
+\makeatother
+% Mac
+% \usepackage[applemac]{inputenc}
+% If none of the above lines work you can also try the following:
+% \usepackage[utf8]{inputenc}
+
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/tex-archive/info/epslatex/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+\usepackage{svg}
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Do not use the stfloats baselinefloat ability as IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/dblfloatfix/
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/url/
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% add custom packages
+\usepackage{color}
+\definecolor{tumblue}{rgb}{0, 0.4, 0.74}
+
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+
+% Add the seminar's cover page
+\input{coverpage}
+
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+% Do not put math or special symbols in the title.
+\title{Continuous optimization of an trajectory - A non-convex optimization problem}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Arash Kiani, Mubashir Hanif, Marc Schmid}
+\IEEEauthorblockA{Technische Universit\"at M\"unchen\\}}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
+In this paper, we present the implementation and tests of a continuous trajectory planning algorithm, used in an autonomous vehicle from Mercedes-Benz (BERTHA). The algorithm is based on non-linear optimization, which objective function can be designed changed to the wished circumstances as driving fast or very safe. En contrary to the algorithm of BERTHA,  there is no guarantee tho a single, global optimum in our algorithm, as we defined our constraints differently, because we use the commonroad scenarios as our environment.
+\end{abstract}
+
+% no keywords
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% no \IEEEPARstart
+In the last years, autonomous driving became a growing  topic in Informatics as the computing power increased that we can compute difficult problems in an agreeable time.
+With this increase in hardware technology, many companies, like Google, Tesla, BMW or Mercedes-Benz, as well as Universities started to invest in autonomous driving. As autonomous driving may become the solution for urban mobility, investing in a safe and optimal trajectory just becomes pressing. In this Practical Course we investigated an algorithm for a trajectory planning task of an IEEE paper written by Julius Ziegler, Philipp Bender, Thao Dang and Christoph Stiller. The trajectory planning problem is a nonlinear optimization problem with nonlinear inequality constraints. The objective function is quadratic. A Newton Type method was used to solve for the trajectory. In this paper we show what we have to change in commonroad to run the solver, as well as the different constraints and different problems we have to solve regarding the algorithm and the scenario. 
+
+\section{The Objective Function and it's constraints}
+\subsection{Prelude}
+The scenario of the optimization task is provided by the commonroad model. In the model data for the lanelets, geometry, dynamic and static obstacles, speed limit and vehicle properties are given. The trajectory is computed in the scenarios coordinate frame. No sensory data has to be provided. The bounds of the problem are declared by the scenarios maximal and minimal coordinates, while the driving corridor depends on the definition. As commonroad provides highway scenarios, the driving corridor is large, most of the time over more than four lines. Later we will see, why this is important. The initial trajectory is some kind of handcrafted line with $n$ points, while $n$ equals the scenarios time $t$ divided by the timestep $\nabla t$.
+
+\subsection{Objective function}
+
+The non convex minimization is done by the python library scipy.optimize. It returns the local minimum of the Objective function in the form of $\mathbf{x}(t) = (x(t), y(t))^T$ for the center point of the vehicle. The orientation of the vehicle $\psi (t) $ and the curvature$\kappa(t)$  of the trajectory are defined as
+\begin{equation}
+\psi (t) = arctan\frac{\dot{y}(t)}{\dot{x}(t)}
+\end{equation}
+\begin{equation}
+\kappa (t) = \frac{\dot{x}(t) \ddot{y}(t) -\dot{y}(t) \ddot{x}(t) }{\sqrt[3]{\dot{x}^2(t)+\dot{y}(t)}}
+\end{equation}
+The oobjectiv function for the optimal trajectory is defined as the one that minimzes the integral
+\begin{equation}
+J\left[\mathbf{x}(t)\right]   = \int_{t_0}^{t_0 + T} L(\mathbf{x},\mathbf{\dot{x}},\mathbf{\ddot{x}},\mathbf{\dddot{x}},) dt
+\end{equation}
+with the summand L :
+\begin{equation}
+L  = \mathbf{w}^T(j_{offs}, j_{vel}, j_{acc}, j_{jerk}, j_{jawr})
+\end{equation}
+\begin{equation}
+\mathbf{w} = (w_{offs} , w_{vel} ,w_{acc} ,w_{jerk} ,w_{jawr})
+\end{equation}
+The time $t_0$ is the starting time of the scenario, while the time $t_0 +T$ equals the length in time of the scenario. The vector $\mathbf{w}$ contains the different weighting factors of the individual summands, which have to be hand chosen for different weightings of the summands (given, not optimized).
+Following the summands of the integrand L will be discussed.
+$$ j_{offs}(\mathbf{x}(t)) = \left|\frac{1}{2}(d_{left}(\mathbf{x}(t))+ (d_{right}(\mathbf{x}(t))\right|^2 $$
+pulls the trajectory to the center of the driving corridor. $d_{left}$ and $d_{right}$ are the distance functions to the left and to the right of the driving corridor. One of those has to be negative and one has to be positive, so that the ego vehicle passes in the center of the driving corridor. If the  obstacles and the driving corridor are convex, its possible to use the euclidean distance, if the obstacles and driving corridor are non convex, the usage of a pseudo distance function is recommended. In section (V) a pseudo distance function is introduced.
+$$ j_{vel}(\mathbf{x}(t)) = \left| v_{des}(\mathbf{x}(t) - \mathbf{\dot{x}}(t) \right|^2 $$
+describes the error of the velocity vector of the trajectory with respect to a desired velocity vector.
+The desired velocity can be handcrafted or is related to the speed limits of the scenario. If the pseudo distance function is used, the derivative of the function is orthogonal to the desired velocity, so it has to be shifted in the right direction.
+$$
+\mathbf{v}_{des} (\mathbf{x}) = v_{des} \begin{pmatrix}
+0 & -1 \\
+1 & 0 \\
+\end{pmatrix} \frac{1}{2} \left(\nabla d_{left}(\mathbf{x}) + \nabla d_{right}(\mathbf{x})\right)
+$$
+These two terms describe the behavior of the trajectory, by developing the position and direction of the velocity. The last 3 terms are smoothness terms, which generate the driving dynamics and comfort.
+$$
+j_{acc}(\mathbf{x}(t)) = \left| \mathbf{\ddot{x}(t)} \right|^2 
+$$
+$$
+j_{jerk} (\mathbf{x}(t)) = \left| \mathbf{\dddot{x}(t)} \right|^2 
+$$
+$$
+j_{jawr} (\mathbf{x}(t)) =\dot{\psi}^2(t) 
+$$
+By minimizing $j_{acc}$, $j_{jerk}$, $j_{jawr}$ the forces to the passengers get minimized and the trajectory gets further smoother, by minimizing the jawrate and changes in acceleration.
+\subsection{Constraint functions}
+In the real world, the car is constraint to some physical bounds and as a human, we also would like to not crash into an other vehicle or a wall. So the objective function has to be optimized with respect to some constraints. The constraints for the vehicle are the steering geometry, the maximal acceleration and the maximal velocity.
+The maximal velocity is determined by,
+$$|\mathbf{\dot{x}}(t)| \leq v_{max}$$
+and the maximal acceleration by, 
+$$|\mathbf{\ddot{x}}(t)| \leq a_{max}$$
+
+For low velocities, the curvature of the trajectory is limited to the steering angle,
+$$ -\kappa_{max} \leq \kappa (t) \leq \kappa_{max}$$
+at higher velocities to the friction limit of the tires, which can be reduced to a circle of forces at any time
+$$
+||\mathbf{\ddot{x}}(t)||^2 \leq a_{max}^2
+$$
+We can reduce the external constraint for "not crashing" to a constraint that the distance of the trajectory at time t has to be larger than zero plus some safety- and the vehicle shape($0+ d_s+ r_v $) distances to every obstacle. Therefore both distance functions can be used.
+$$
+\mathbf{d}(\mathbf{x}(t),\mathbf{o}(t)) \geq 0+ d_s + r_v$$
+where $\mathbf{0}(t) $ is the position of the obstacle at time t.\\
+As part of the practical course, we used different definitions to stay in the driving corridor. As the \"soft constraint\" of the objective function should pull the ego vehicle in the middle of the driving corridor, we have to make sure it's not finding a local optimum outside the driving corridor. There are 2 methods to guarantee this. Either we set the boundaries of the problem to the driving corridor boundaries, or we use some distance constraint for example if the car drives from left to right,
+$$ p_{ego} \geq bound_{left}$$
+$$ p_{ego} \leq bound_{right}$$
+or 
+$$ dist(p_{ego},bound_{left}) \leq 0 $$
+$$ dist(p_{ego},bound_{right}) \leq 0 $$
+The second set of constraints just work with the signed distance function, as the euclidean distance does not distinguish between being left or right of an object.
+\section{Ego vehicle shaping}
+Planning collision free motion is one of the most important task in autonomous driving. The geometrically complexity of shapes such as ego vehicle, dynamic obstacles and road boundary made the computation complicated. To cop with this complexity we need to simplify the shapes by computing approximation of them. Thus the objects would be replaced by a simpler objects that captures morphological features of the original objects.
+Any vehicle shapes can be represented with circles. The ego vehicle is modeled by circles along the longitudinal axis. There are two parameters for ego vehicle shaping; first: radius of circles and second: K as the number of circles which we use to model our vehicle. Finding a suitable K based on need is the most important thing to do which in our model K=4. Because for large value of k, computation cost would increase and for small k we will dismiss some area around vehicle. The next thing is to find the right place for circles center point.
+
+\begin{figure}[h]
+\includegraphics[scale = 0.3]{./images/egoVehicle.png}
+\caption{Finding circle center point}
+\end{figure}
+
+Based on figure 1, the radius of circles is "a" and width of car is "2*b" and the specified triangle is right triangle. With the help of Pythagorean theorem, $b^2+c^2=a^2$ we can calculate the first and the last center point of circles along the the longitudinal axis. Then based on the center point distance of two circles we will calculate center points for the remaining circles. After computing 4 circles center points, we have the model detail and circles coordinate. Thus we just transform circle center points based on the midpoint of vehicle.
+
+\begin{figure}[h]
+\includegraphics[scale = 0.5]{./images/sincarshape.png}
+\caption{Circle decomposition of ego vehicle shape}
+\end{figure}
+In figure 2 we can see how the vehicle is modeled on the trajectory. If we choose the time step to big, our model may crash due to the first circle of the timestep t-1 and the last circle of t do not intersect anymore, so there might be the option that a car can drive between the timesteps t and t-1 into the trajectory. The timestep in the simulation is chosen so small, that this will never happen.
+\section{Solver design}
+\subsection{Solver}
+For optimization with constraints, the problem looks like 
+\begin{equation}
+\min_{\mathbf{x}} f(\mathbf{x})
+\end{equation}
+w.r.t.
+
+$$a(\mathbf{x}) \geq 0$$
+$$b(\mathbf{x}) = 0$$
+
+The Lagrangian with the Lagrange multipliers $\mathbf{\lambda},\mathbf{\alpha}$ looks like:
+\begin{equation}
+\mathcal{L}(\mathbf{x},\mathbf{\lambda},\mathbf{\alpha}) = f(x) - \mathbf{\lambda}^T a(\mathbf{x} -\mathbf{\alpha}^T b (\mathbf{x})
+\end{equation}
+The solver has to be chosen so that a non convex problem can be solved. The objective function and constraints are two times continuously differentiable (as long as we use convex polygon shaping this also holds for the euclidean distance). The \texttt{scipy.optimize}-toolbox of python has a lot of options. Also there is the \texttt{nlopt} library which has a python wrapper. In this case the \texttt{scipy.optimize}-toolbox offers itself because of the detailed documentation.
+ As this is a minimization problem, \texttt{scipy.optimize.minimize} was chosen. Constraints are just defined for the'COBYLA'( Constrained Optimization BY Linear Approximation) and 'SLSQP'( Sequential Least Squares Programming) methods. Further the algorithm 'SLSQP' was chosen, as 'COBYLA' just supports non equality constraints. To lead our vehicle to the goal region of commonroad, we sometimes used equality constraints.
+
+\subsection{Constraint Equations}
+For the solver there have to be six different inequality constraint vectors.
+Lets define the amount of trajectory points as $t$, the amount of points which discretize the ego vehicle as $n_e$, the amount of (dynamic) obstacles as $c_d$, the amount of points discrediting the (dynamic) obstacle as $n_d$ and finally for the points discretizing the driving corridor $n_{DC}$. The notation of acceleration, velocity and curvature is $_a $, $ _v$, $_{\omega r}$ and $_{\omega l}$. The amount of distance constraints to the (dynamic) obstacles is $A_d = t n_e c_d n_d $  the amount of distance constraints to the driving corridor (as there are distance constraints to the left and right) is $A_{DC} = t n_e * 2 n_{DC}$.
+Considering the acceleration velocity and curvature constraints for the trajectory, there are $A_g = t_a+t_v+t_{\omega l} +t_{\omega r}$ more equations.
+Concluding there are $A_{total} = A_g+ A_{DC}+ A_d$ inequality constraints.\\
+Equality constraints can be used for the commonroad planning task. If they are used, there is just one for the start- and one for the goal position (if the goal position is no uncertainty area). So they are not really contributing to the amount of constraints equations needed.
+\section{Distance function}
+A distance function is needed for computing distance between two polygons. In addition to computational geometry this part also related to pattern recognition (as described in Cox, Maitre, Minoux and Ribeiro [2]) in the context of optimal matching of two polygon. As the paper[1] suggested we define two polygons G and P with a single linear segment of a polygon as the tuple $G = (\overline{g_{1}g_{2}} ,t_1 ,t_2 ) $ and $ P = (\overline{p_{1}p_{2}} ,t_1 ,t_2 )$. Where $g_1$ and $g_2$ are two adjacent corner points of the polygon, and $t_1$, $t_2$ are predefined tangent vectors at the corner points. For computing distance between two polygons, the notation of distance function in Hausdorff distance[3] is: \\
+$$\mathbf{D}(G,P)= \max{\{\max_{\{p\in P\}} d(p,G), \max_{\{g\in G\}}d(g,P)} \},$$
+we want to avoid collision in vehicle motion thus this notation should be changed to:\\
+\begin{equation}
+\mathbf{D}(G,P)= \min{\{\min_{\{p\in P\}} d(p,G), \min_{\{g\in G\}}d(g,P)} \},
+\end{equation}
+i.e., the minimum euclidean distance from a vertex point of any polygon to other polygon.\\
+We use SLSQP which is a Newton type optimization method, thus all of constraint functions should be continuously differentiable. The Euclidean distance to a non convex polygon is not differentiable twice. Thus pseudo distance function is used which guarantees the continuously differentiability. A line of a polygon is defined by two adjacent corner points $\mathbf{p}_1$ and $\mathbf{p}_2$ with $\mathbf{t}_1$  and $\mathbf{t}_2$ as corresponding tangent vectors.
+A pseudo tangent vector is created by interpolating the corner tangent vectors along the segment $\mathbf{\overline{p_1p_2}}$ 
+$$
+\mathbf{t}_\lambda = \lambda \mathbf{t}_2 + (1-\lambda) \mathbf{t}_1
+$$
+which corresponds to the point 
+$$
+\mathbf{p}_\lambda = \lambda \mathbf{p}_2 + (1-\lambda) \mathbf{p}_1
+$$
+for $\lambda \in [0,1]$. $\lambda$ is determined such that the pseudo tangent is perpendicular to the pseudo normal for projecting $\mathbf{x}$ 
+$$
+\mathbf{n}_\lambda \mathbf{t}_\lambda = 0
+$$
+In general, to determine $\lambda$, following quadratic equation has to be solved.
+
+% \begin{equation}
+\begin{multline}
+\lambda \mathbf{x} \mathbf{t}_2 + (1-\lambda) \mathbf{x}\mathbf{t}_1 - (\lambda^2\mathbf{p}_2 \mathbf{t}_2 \\+(\lambda-\lambda^2)(\mathbf{p}_2 \mathbf{t}_1 +\mathbf{p}_1 \mathbf{t}_2) +(1- \lambda)^2 \mathbf{p}_1 \mathbf{t}_1) = 0
+\end{multline}
+% \end{equation}
+
+\begin{algorithm}
+% \caption{Pseudo Distance}\label{euclid}
+\begin{algorithmc}
+\Procedure{compute pseudo distance}{}
+
+\BState \emph{polygons loop}:
+\State $\text{get new polygon coordinate}$
+\State $a \gets (t_2 - t_1) * (p_1 - p_2) + \
+            (t_2 - t_1) * (p_1 - p_2)$
+            
+\State $b \gets (x - p_1) * (t_2 - t_1) + t_1 * (p_1 - p_2) + (y - p_1) * 
+        (t_2 - t_1) + t_1* (p_1 - p_2)$
+\State $c \gets (x - p_1) * t_1 + (y - p_1) * t_1$
+\If{ $\text{is a quadratic equation}$} 
+\If{ $\text{equation does not have answer}$}
+\Return $\text{compute euclidean distance}$
+\EndIf
+\State $lambda1 \gets (-b + sqrt(b^2 - 4 * a * c)) / (2 * a)$
+\State $lambda2 \gets (-b - sqrt(b^2 - 4 * a * c)) / (2 * a)$
+\State $lambda \gets \text{positive lambda}(lambda1, lambda2)$
+\EndIf
+
+\If{$b = 0$}
+\Return $\text{compute distance to first point}$
+\EndIf
+\State \textbf{else}
+            $lambda \gets -c / b$
+\State \text{find the closest obstacle}
+\State \textbf{goto} \emph{polygons loop}.
+\EndProcedure
+\end{algorithmc}
+\end{algorithm}
+
+As in the above pseudo code for computing and analyzing quadratic equation(9), this equation has maximum 2 answer thus: if lambda has two value, positive lambda was chosen. And if lambda has not any value, we had to use euclidean distance to compute the distance. To determine the distance to a each polygon, we compute distance to every linear segment in the polygon and pick the smallest one as the distance. However, computing $\lambda$ based on this procedure is very time consuming because not only for each polygon we had to recalculate the $\lambda$ and solving the quadratic equation. But also for every timestep we had to recalculate the whole distances to polygons one more time. However, after many surveying we find out that Instead of this time consuming procedure, we can transform the two adjacent point to $(0,0)^T$ and $(l,0)^T$. Since we can find the transformed coordinate matrix, we will transform vehicle coordinate with this transformation matrix too. Now we can use the following formula for computing $\lambda$ which was also presented in paper,
+\begin{equation}
+\lambda = (m_1*y+x)/(m_1-m_2)y+l
+\end{equation}
+this equation is linear which only gives us one $\lambda$. We do not have to recalculate $\lambda$ by solving quadratic equation for every polygons and time complexity reduce dramatically by avoiding complex loops.
+As paper suggested the signed pseudo distance d to the segment is $||{n_\lambda}||$ if
+$y > 0$ and $-||{n_\lambda}||$ else. For the sake of simplicity, instead
+of using the true gradient of d, we use the vector $\frac{n_\lambda}{|d|}$ as the
+pseudo gradient of d.\\
+
+We use euclidean distance as the distance function for computing distance between ego vehicle and dynamic obstacles. Because we model ego vehicle into 4 circles and with this knowledge which our dynamic obstacles are convex so euclidean distance is continuously differentiable. Also with euclidean distance which described in (8) our computation overhead would decrease dramatically.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.5]{dist_left.png}
+\end{center}
+\caption{Vectorfield with the normal $n_\lambda$ of the pseudo distance function to the left boundary of the NGSIM\_US101\_1 commonroad scenario}
+\label{ph1}
+\end{figure}
+
+\section{Driving corridor and Commonroad}
+\subsection{Driving corridor}
+An important point for the objective function is, how to choose the driving corridor. If the driving corridor is wide, the ego vehicle can overtake slow cars and leave the lane, if the driving corridor is narrow, it stays on it's given lanelet and it's hard to overtake slow cars, because the objective function will increase due to $j_{offs}$. Nevertheless, if the driving corridor is wide, $j_{offs}$  is going to pull the car in the middle of the driving corridor, which might be between two or more lanelets, depending on the scenario.
+\begin{figure}[h]
+% \begin{center}
+\includegraphics[scale = 0.3]{placeholderdc1.png}
+% \end{center}
+\caption{A trajectory with a wide driving corridor}
+\label{ph1}
+\end{figure}
+In figure \ref{ph1} the optimal trajectoy would just be a straight line from the start point to the goal, while the offsetpart of the objective function pulls the ego vehicle into the middle of the trajectory.
+In figure \ref{ph2} the driving corridor is chosen as the lanelet boundaries. So the ego vehicle drives in the middle of the lanelet, as expected.
+So the main difficulty is how to chose the driving corridor in the simulation, as we work with multi lane scenarios most of the time. 
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.3]{placeholderdc2.png}
+\end{center}
+\caption{A trajectory with a narrow driving corridor}
+\label{ph2}
+\end{figure}
+\subsection{Commonroad}
+Commonroad is a project of the Technical University Munich, providing realistic data for motion planning on roads. It includes models of streets, traffic scenarios and tasks an ego vehicle has to perform. This paper focus on the US highway scenarios and simple models of roads. 
+The algorithm does not pay attention to traffic rules, safety rules or behavior of other traffic participants. It's just optimizing the ego trajectory with the given data. There are no probabilistic predictions if the traffic participants trajectories. They will be treated as given by the commonroad scenario, as seen in figure \ref{CRT} the trajectories of the dynamic obstacles are given as point representations of the midpoint of the obstacle.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.15]{commonroadUS28.png}
+\end{center}
+\caption{The NGSIM\_US101\_1 commonroad scenario}
+\label{CRT}
+\end{figure}
+
+The commonroad scenario provides the lanelet coordinates and the direction of the lanelets. We decided to generate the driving corridor as all adjacent lanelets, which points into the same direction. The dynamic obstacles are represented by oriented rectangles at each timestep in the commonroad scenario. For the optimization, the dynamic obstacles have the shape of an matrix. in each row is are the four corner points of the orientated rectangle at a specific timestep. So the algorithm can build the constraint functions for each timestep. The algorithm do not distinguish between static and dynamic obstacles, as static obstacles can be represented as dynamic obstacles with constant position.\\ Therefore static and dynamic obstacles share properties and functions.
+
+\section{Experiments}
+In the previous section was a brief introduction to the parameters we have to take into account. In the following sections we will compare the different distance functions, different collision models to dynamic obstacles, discuss the vehicle shaping, test cases with different outcomes and also the weighting problem.
+\subsection{Collision models}
+For the different distance functions there are two different collision models.
+Once the commonroad scenario was used, and polygones were created for the pseudo distance function.
+The other one is for the euclidean distance function and is derived by [2].
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.16]{commonroadUS4.png}
+\end{center}
+\caption{The NGSIM\_US101\_4 commonroad scenario with polygones as collision model}
+\label{us4}
+\end{figure}
+In figure \ref{us4} there is the NGSIM\_US101\_4 commonroad scenario with its dynamic obstacles. The obstacles are simple RectOBB obstacles from the commonroad scenario. If the pseudo distance function is used, the polygonial shape does not matter. To compare the different distance functions, an other collision model is needed for the dynamic obstacles. In figure \ref{newcm} the other collision model is shown. It consist of multiple points on the longtitudonal axis of the obstacle. These points are midpoints of circles, so that we got a similar shape like our ego vehicle. Depending on how much computing power is available, one can choose how much points characterize the obstacle.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.6]{newcollision.png}
+\end{center}
+\caption{The NGSIM\_US101\_4 commonroad scenario with a reduced collision model}
+\label{newcm}
+\end{figure}
+
+
+\subsection{Comparison of Euclidean- and Pseudo Distance}
+Will be done.
+\subsection{Weighting Problem}
+In this experiment we want to discuss how the weights influence the objective function. Therefore we stretched the constraints to acceleration, velocity, jawrate and jerk so that it's not that strictly constrained and does not need to follow a physical path. For sake of simplicity the most simple road is chosen.\\
+We continuously set every weight to ten and all others to zero, to show the impact of the different weights. The blue trajectory is the initial trajectory from inital to goal position, while the orange one is the optimized one.
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.6]{w1000.png}
+\end{center}
+\caption{The \"OneRoad"-handcrafted scenario with weighted offsetterm}
+\label{offs}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.6]{w01000.png}
+\end{center}
+\caption{The \"OneRoad"-handcrafted scenario with weighted velocityterm}
+\label{ves}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.6]{w00100.png}
+\end{center}
+\caption{The \"OneRoad"-handcrafted scenario with weighted accelerationterm}
+\label{acc}
+\end{figure}\\
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.6]{w00010.png}
+\end{center}
+\caption{The \"OneRoad"-handcrafted scenario with weighted jerkterm}
+\label{jerk}
+\end{figure}
+\begin{figure}[h]
+\begin{center}
+\includegraphics[scale = 0.6]{w00001.png}
+\end{center}
+\caption{The \"OneRoad"-handcrafted scenario with weighted jawrateterm}
+\label{jaw}
+\end{figure}
+in figure \ref{jaw} the correlation between the term of the jawrate and what a human calls a smooth trajectory should be clear. For minimizing the jawrate the trajectories are very good. The terns of acceleration, velocity and jerk in figure \ref{ves} to \ref{jerk} do not really help to get the trajectory smooth or minimize the acceleration at all. The whole tests of weighting for good trajectories would be to much for this paper.
+As conclusion of the weighting to get a smooth trajectory is to weight the jawrateterm. To push the trajectory in the middle of the driving corridor we recommend to weight the offsetterm. The acceleration-,velocity and jerkterm are contributing very little to the smoothness. In the test we did, they often aggravate the trajectories.
+\subsection{Problematic cases}
+\subsubsection{}
+Let's asume the NGSIM\_US101\_1 scenario.with the commonroad goal scenario. A working scenario looks like figure \ref{working}. The orange line is the optimized trajectory while the blue line is the initial trajectory. The red zone is the goal region. The weights are five for the offest function and zero else. Maximal velocity is 28 $\frac{m}{s}$, maxmimal acceleration is 12 $\frac{m}{s^2}$ and maximal curvature is $\frac{\pi}{1000}$ due to the very narrow curvature corridor the trajectory is a streight line.
+\begin{figure}[h]
+\begin{center}
+\includesvg[scale = 0.6]{simw5000.svg}
+\end{center}
+\caption{The NGSIM\_US101\_1 commonroad scenario with result}
+\label{working}
+\end{figure}
+First the ego vehicle is slow, accelerating to the goal position to avoid collision with dynamic obstacles. There is no weight to acceleration, turning ratio, velocity or jerk. As the constraints are chosen very narrow, the trajectory looks like a straight line.\\
+In figure \ref{00102} the weights have changed to  one in acceleration and two in the jawrate. Now the objective function changes in that way, that the algorithm do not find a solution anymore ( with this inital trajectory). The inequality constraints of the jawrate and the maximal values collide. The orange (optimized trajectory) and the blue (initial trajectory) line are very close to each other. As the solver failed in the 10th iteration, this is a predictable result due to the small changes in the trajectories.
+\begin{figure}[h]
+\begin{center}
+\includesvg[scale = 0.6]{simw00102.svg}
+\end{center}
+\caption{The NGSIM\_US101\_1 commonroad scenario without a result due to no compabilities with the inequality constraints}
+\label{11102}
+\end{figure}
+In figure \ref{00102} the weights have changed to  one in velocity, one in offset and one in acceleration and two in the jawrate. Here the objective function also changes in that way, that the algorithm do not find a solution anymore ( with this inital trajectory). The inequality constraints of the jawrate and the maximal values collide. The orange (optimized trajectory) and the blue (initial trajectory) line are very close to each other. As the solver failed in the first iteration, there is no change at all in the trajectory.
+\begin{figure}[h]
+\begin{center}
+\includesvg[scale = 0.6]{simw11102ineqconstrinc.svg}
+\end{center}
+\caption{The NGSIM\_US101\_1 commonroad scenario without a result due to no compabilities with the inequality constraints in the first iteration}
+\label{11102}
+\end{figure}
+As conclusion of this experiments the weights has to be chosen in that way that the initial trajectory can be changed without colliding with the constraint equations to fast. If we allow big changes in the jawrate and acceleration the trajectory will not look smooth anymore like in subsection C.
+
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation Results.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the 
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals/conferences use top floats
+% exclusively. Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the \fnbelowfloat
+% command of the stfloats package.
+
+\section{Testing}
+Unit test and manual test are used to test the project. Unit test was written for components because individual units are tested to determine if there are any issues by the developer himself. It is concerned with functional correctness of the standalone modules. Also it helps in modularity of project because each unit has to do one task and there should be a unit test for each task. Other benefits of unit testing:
+\begin{itemize}
+\item Reduces Cost of Testing as defects are captured in very early phase.
+\item  Improves design and allows better refactoring of code.
+\end{itemize}\\
+
+Manual tests were performed instead of integration test. Manual testing is a testing process that is carried out manually in order to find defects without the usage of tools or automation scripting. After completion of unit testing, the units or modules are to be integrated. The purpose of this phase is to verify the functional, performance, and reliability between the modules that are integrated just like integration test.
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgement
+% \section*{Acknowledgment}
+% The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{Bertha}
+J.~Ziegler, P.~Bender, T.~Dang and C.~Stiller, \emph{Trajectory Planning for BERTHA- a Local, Continuous Method}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+\bibitem{DistancePattern}
+P.~Cox, H.~Maitre, M.~Minoux and C.~C.~Ribeiro, \emph{Optimal Matching of Convex Polygons}, \hskip 1em plus
+  0.5em minus 0.4em\relax Pattern Recognition Letters 9 (1989), 327-334.
+\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
+
+
+\grid
