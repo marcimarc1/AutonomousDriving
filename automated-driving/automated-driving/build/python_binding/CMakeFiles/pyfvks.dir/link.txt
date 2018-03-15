@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC -fPIC -std=c++11  -std=c++14 -flto -O2 -g -DNDEBUG  -shared -Wl,-soname,pyfvks.so -o pyfvks.so CMakeFiles/pyfvks.dir/src/py_bind.cpp.o CMakeFiles/pyfvks.dir/src/module_collision.cpp.o ../libfvks.a 

@@ -1,0 +1,684 @@
+%% bare_conf.tex
+%% V1.4
+%% 2012/12/27
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8 or later) with an IEEE conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/tex-archive/macros/latex/contrib/IEEEtran/
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.
+%% In no event shall IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%
+%% File list of work: IEEEtran.cls, IEEEtran_HOWTO.pdf, bare_adv.tex,
+%%                    bare_conf.tex, bare_jrnl.tex, bare_jrnl_compsoc.tex,
+%%                    bare_jrnl_transmag.tex
+%%*************************************************************************
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. IEEE's font choices can trigger bugs that do  ***
+% *** not appear when using other class files.                            ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+% Note that the a4paper option is mainly intended so that authors in
+% countries using A4 can easily print to A4 and see how their papers will
+% look in print - the typesetting of the document will not typically be
+% affected with changes in paper size (but the bottom and side margins will).
+% Use the testflow package mentioned above to verify correct handling of
+% both paper sizes by the user's LaTeX system.
+%
+% Also note that the "draftcls" or "draftclsnofoot", not "draft", option
+% should be used if it is desired that the figures are to be displayed in
+% draft mode.
+%
+\documentclass[conference]{IEEEtran}
+% Add the compsoc option for Computer Society conferences.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference]{../sty/IEEEtran}
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% For directly writing german umlauts uncomment the appropriate line for
+% your operating system:
+% Windows:
+% \usepackage[ansinew]{inputenc}
+% Linux:
+\usepackage[latin1]{inputenc}
+% Mac
+% \usepackage[applemac]{inputenc}
+% If none of the above lines work you can also try the following:
+% \usepackage[utf8]{inputenc}
+
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/oberdiek/
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+%\usepackage{cite}
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 4.0 (2003-05-27) and later if using hyperref.sty. cite.sty does
+% not currently provide for hyperlinked citations.
+% The latest version can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/cite/
+% The documentation is contained in the cite.sty file itself.
+
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/tex-archive/macros/latex/required/graphics/
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/tex-archive/info/epslatex/
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+\usepackage[cmex10]{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics. If using
+% it, be sure to load this package with the cmex10 option to ensure that
+% only type 1 fonts will utilized at all point sizes. Without this option,
+% it is possible that some math symbols, particularly those within
+% footnotes, will be rendered in bitmap form which will result in a
+% document that can not be IEEE Xplore compliant!
+%
+% Also, note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/amslatex/math/
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithms/
+% There is also a support site at:
+% http://algorithms.berlios.de/index.html
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/algorithmicx/
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/required/tools/
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=normalsize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a larger sans serif font
+% than the serif footnote size font used in traditional IEEE formatting
+% and thus the need to invoke different subfig.sty package options depending
+% on whether compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/subfig/
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure. The latest version and documentation can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/base/
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/sttools/
+% Do not use the stfloats baselinefloat ability as IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/dblfloatfix/
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/tex-archive/macros/latex/contrib/url/
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% add custom packages
+\usepackage{color}
+\definecolor{tumblue}{rgb}{0, 0.4, 0.74}
+
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+
+\begin{document}
+
+% Add the seminar's cover page
+\input{coverpage}
+
+%
+% paper title
+% can use linebreaks \\ within to get better formatting as desired
+% Do not put math or special symbols in the title.
+\title{Continuous optimization of an trajectory - A non-convex optimization problem}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Arash Kiani, Mubashir Hanif, Marc Schmid}
+\IEEEauthorblockA{Technische Universit\"at M\"unchen\\
+Email: Your email}}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+\begin{abstract}
+In this paper, we present the implementation and tests of a continuous trajectory planning algorithm, used in an autonomous vehicle from Mercedes-Benz (\"BERTHA\"). The algorithm is based on non-linear optimization, which objective function can be designed changed to the wished circumstances as driving fast or very safe. En contraire to the algorithm of BERTHA,  there is no guarantee tho a single, global optimum in our algorithm, as we defined our constraints differently, because we use the commonroad scenarios as our environment.
+\end{abstract}
+
+% no keywords
+
+
+
+
+% For peer review papers, you can put extra information on the cover
+% page as needed:
+% \ifCLASSOPTIONpeerreview
+% \begin{center} \bfseries EDICS Category: 3-BBND \end{center}
+% \fi
+%
+% For peerreview papers, this IEEEtran command inserts a page break and
+% creates the second title. It will be ignored for other modes.
+\IEEEpeerreviewmaketitle
+
+
+
+\section{Introduction}
+% no \IEEEPARstart
+In the last years, autonomous driving became a growing  topic in Informatics as the computing power increased that we can compute dificult problems in an agreeable time.
+With this increase in hardware technology, many companies, like Google, Tesla, BMW or Mercedes-Benz, as well as Universities started to invest in autonomous driving. As autonomous driving may become the solution for urban mobility, investing in a safe and optimal trajectory just becomes pressing. In this Practical Course we investigated an algorithm for a trajectory planning task of an IEEE paper written by Julius Ziegler, Philipp Bender, Thao Dang and Christoph Stiller. The trajectory planning problem is a nonlinear optimization problem with nonlinear inequality constraints. The objective function is quadratic. A Newton Type method was used to solve for the trajectory. In this paper we show what we have to change in commonroad to run the solver, as well as the different constraints and different problems we have to solve regarding the algorithm and the scenario. 
+
+\hfill mds
+ 
+\hfill January 2018
+
+\section{The Objective Function and it's constraints}
+\subsection{Prelude}
+The scenario of the optimization task is provided by the commonroad model. In the model data for the lanelets, geometry, dynamic and static obstacles, speed limit and vehicle properties are given. The trajectory is computed in the scenarios coordinate frame. No sensory data has to be provided. The bounds of the problem are declared by the scenarios maximal and minimal coordinates, while the driving corridor depends on the definition. As commonroad provides highway scenarios, the driving corridor is large, most of the time over more than four lines. Later we will see, why this is important. The initial trajectory is some kind of handcrafted line with $n$ points, while $n$ equals the scenarios time $t$ devided by the timestep $\nabla t$.
+
+\subsection{Objective function}
+
+The non convex minimization is done by the python library scipy.optimize. It returns the local minimum of the Objective function in the form of $\mathbf{x}(t) = (x(t), y(t))^T$ for the centerpoint of the vehicle. The orientation of the vehicle $\psi (t) $ and the curvature$\kappa(t)$  of the trajectory are defined as
+\begin{equation}
+\psi (t) = arctan\frac{\dot{y}(t)}{\dot{x}(t)}
+\end{equation}
+\begin{equation}
+\kappa (t) = \frac{\dot{x}(t) \ddot{y}(t) -\dot{y}(t) \ddot{x}(t) }{\sqrt[3]{\dot{x}^2(t)+\dot{y}(t)}}
+\end{equation}
+The oobjectiv function for the optimal trajectory is defined as the one that minimzes the integral
+\begin{equation}
+J\left[\mathbf{x}(t)\right]   = \int_{t_0}^{t_0 + T} L(\mathbf{x},\mathbf{\dot{x}},\mathbf{\ddot{x}},\mathbf{\dddot{x}},) dt
+\end{equation}
+with the summand L :
+\begin{equation}
+L  = \mathbf{w}^T(j_{offs}, j_{vel}, j_{acc}, j_{jerk}, j_{jawr})
+\end{equation}
+\begin{equation}
+\mathbf{w} = (w_{offs} , w_{vel} ,w_{acc} ,w_{jerk} ,w_{jawr})
+\end{equation}
+The time $t_0$ is the starting time of the scenario, while the time $t_0 +T$ equals the length in time of the scenario. The vector $\mathbf{w}$ contains the different weighting factors of the individual summands, which have to be handchosen for different weightings of the summands (given, not optimized).
+Following the summands of the integrand L will be discussed.
+$$ j_{offs}(\mathbf{x}(t)) = \left|\frac{1}{2}(d_{left}(\mathbf{x}(t))+ (d_{right}(\mathbf{x}(t))\right|^2 $$
+pulls the trajectory to the center of the driving corridor. $d_{left}$ and $d_{right}$ are the distance functions to the left and to the right of the driving corridor. One of those has to be negative and one has to be positive, so that the ego vehicle passes in the center of the driving corridor. If the  obstacles and the driving corridor are convex, its possible to use the euclidian distane, if the obstacles and driving corridor are non convex, the usage of a pseudo distance function is recommended. In section (adkfjeo) a pseudo distance function is introduced.
+$$ j_{vel}(\mathbf{x}(t)) = \left| v_{des}(\mathbf{x}(t) - \mathbf{\dot{x}}(t) \right|^2 $$
+describes the error of the velocity vector of the trajectory with respect to a dsired velocity vector.
+The desired velocity can be handcrafted or is related to the speed limits of the scenario. If the pseudo distance function is used, the derivative of the function is orthogonal to the desired velocity, so it has to be shifted in the right direction.
+$$
+\mathbf{v}_{des} (\mathbf{x}) = v_{des} \begin{pmatrix}
+0 & -1 \\
+1 & 0 \\
+\end{pmatrix} \frac{1}{2} \left(\nabla d_{left}(\mathbf{x}) + \nabla d_{right}(\mathbf{x})\right)
+$$
+These two terms describe the behavior of the trajectory, by developing the position and direction of the velocity. The last 3 terms are smoothness terms, which generate the driving dynamics and comfort.
+$$
+j_{acc}(\mathbf{x}(t)) = \left| \mathbf{\ddot{x}(t)} \right|^2 
+$$
+$$
+j_{jerk} (\mathbf{x}(t)) = \left| \mathbf{\dddot{x}(t)} \right|^2 
+$$
+$$
+j_{jawr} (\mathbf{x}(t)) =\dot{\psi}^2(t) 
+$$
+By minimizing $j_{acc}$, $j_{jerk}$, $j_{jawr}$ the forces to the passengers get minimized and the trajectory gets further smoother, by minimizing the jawrate and changes in acceleration.
+\subsection{Constraint functions}
+In the real world, the car is constaint to some physical bounds and as a human, we also would like to not crash into an other vehicle or a wall. So the objective function has to be optimized with respect to some constraints. The constraints for the vehicle are the steering geometry, the maximal acceleration and the maximal velocity.
+The maximal velocitiy is determined by,
+$$|\mathbf{\dot{x}}(t)| \leq v_{max}$$
+and the maximal acceleration by, 
+$$|\mathbf{\ddot{x}}(t)| \leq a_{max}$$
+
+For low velocities, the curvature of the trajectory is limited to the steering angle,
+$$ -\kappa_{max} \leq \kappa (t) \leq \kappa_{max}$$
+at higher velocities to the friction limit of the tires, which can be reduced to a circle of forces at any time
+$$
+||\mathbf{\ddot{x}}(t)||^2 \leq a_{max}^2
+$$
+We can reduce the external constraint for "not crashing" to a constraint that the distance of the trajectory at time t has to be larger than zero plus some safety- and the vehicle shape($0+ d_s+ r_v $) distances to every obstacle. Therefore both distance functions can be used.
+$$
+\mathbf{d}(\mathbf{x}(t),\mathbf{o}(t)) \geq 0+ d_s + r_v$$
+where $\mathbf{0}(t) $ is the position of the obstacle at time t.\\
+As part of the practical course, we used different definitions to stay in the driving corridor. As the \"soft constraint\" of the objective function should pull the ego vehicle in the middle of the driving corridor, we have to make sure it's not finding a local optimum outside the driving corridor. There are 2 methods to guarantee this. Either we set the boundaries of the problem to the driving corridor boundaries, or we use some distance constraint for example if the car drives from left to right,
+$$ p_{ego} \geq bound_{left}$$
+$$ p_{ego} \leq bound_{right}$$
+or 
+$$ dist(p_{ego},bound_{left}) \leq 0 $$
+$$ dist(p_{ego},bound_{right}) \leq 0 $$
+The second set of constraints just work with the signed distance function, as the euclidian distance does not distinguish between being left or right of an object.
+\section{Ego vehicle shaping}
+The ego vehicle is modeled by circles with the diameter of the width of the ego vehicle along the longitudinal axis. The Midpoint of the vehicle is the axis of rotation of the vehicle in the model.
+\begin{figure}[h]
+\begin{center}
+\includegraphics{./images/grins.pdf}
+\end{center}
+\caption{A vector graphic loaded from a PDF file}
+\label{veh_shape}
+\end{figure}
+In \ref{veh_shape} we can see how the vehicle is modeled on the trajectory. If we choose the time step to big, our model may crash due to the first circle of the timestep t-1 and the last circle of t do not intersect anymore, so there might be the option that a car can drive between the timesteps t and t-1 into the trajectory. The timestep in the simulation is choosen so small, that this will never happen.
+\section{Solver design}
+For optimization with constraints, the problem looks like 
+\begin{equation}
+\min_{\mathbf{x}} f(\mathbf{x})
+\end{equation}
+w.r.t.
+
+$$a(\mathbf{x}) \geq 0$$
+$$b(\mathbf{x}) = 0$$
+
+The lagrangian with the lagrange multipliers $\mathbf{\lambda},\mathbf{\alpha}$ looks like:
+\begin{equation}
+\mathcal{L}(\mathbf{x},\mathbf{\lambda},\mathbf{\alpha}) = f(x) - \mathbf{\lambda}^T a(\mathbf{x} -\mathbf{\alpha}^T b (\mathbf{x})
+\end{equation}
+The solver has to be choosen so that a non convex problem can be solved. The objective function and constraints are two times continuosly differentiable (as long as we use convex polygone shaping this also holds for the euclidean distance). The \texttt{scipy.optimize}-toolbox of python has a lot of options.
+ As this is a minimization problem, \texttt{scipy.optimize.minimize} was chosen. Constraints are just defined for the'COBYLA'( Constrained Optimization BY Linear Approximation) and 'SLSQP'( Sequential Least SQuares Programming) methods. Further the algorithm 'SLSQP' was chosen, as 'COBYLA' just supports non equality constraints. To lead our vehicle to the goal region of commonroad, we sometimes used equality constraints.
+\section{Distance function}
+As the Euclidian distance to a non convex polygone is not differentiable twice. We introduce a pseudo distance function which guarantees the differentiability. A line of a polygone is defined by two adjacent corner points $\mathbf{p}_1$ and $\mathbf{p}_2$ with $\mathbf{t}_1$  and $\mathbf{t}_2$ as corresponding tangent vectors.
+A pseudo tangent vector is created by interpolating the corner tangent vectors along the segment $\bar{p_1p_2}$ 
+$$
+\mathbf{t}_\lambda = \lambda \mathbf{t}_2 + (1-\lambda) \mathbf{t}_1
+$$
+which corresponds to the point 
+$$
+\mathbf{p}_\lambda = \lambda \mathbf{p}_2 + (1-\lambda) \mathbf{p}_1
+$$
+for $\lambda \in [0,1]$. For projecting $\mathbf{x}$ we determine $\lambda$ such that the pseudo tangent is perpendicular to the pseudo normal 
+$$
+\mathbf{n}_\lambda \mathbf{t}_\lambda = 0
+$$
+In general, to determine $\lambda$, a quadratic term has to be solved.
+$$
+\lambda \mathbf{x} \mathbf{t}_2 + (1-\lambda) \mathbf{x}\mathbf{t}_1 - $$ $$(\lambda^2\mathbf{p}_2 \mathbf{t}_2 +(\lambda-\lambda^2)(\mathbf{p}_2 \mathbf{t}_1 +\mathbf{p}_1 \mathbf{t}_2) +(1- \lambda)^2 \mathbf{p}_1 \mathbf{t}_1) = 0
+$$
+ARASH DESCRIBE HOW U CHOOSE LAMBDA ....
+\section{Driving corridor and Commonroad}
+\subsection{Driving corridor}
+An important point for the objective function is, how to choose the driving corridor. If the driving corridor is wide, the ego vehicle can overtake slow cars and leave the lane, if the driving corridor is narrow, it stays on it's given lanelet and it's hard to overtake slow cars, because the objective function will increase due to $j_{offs}$. Nevertheless, if the driving corridor is wide, $j_{offs} $  is going to pull the car in the middle of the driving corridor, which might be between two or more lanelets, depending on the scenario.
+
+\subsection{Commonroad}
+Commonroad is a project of the Technical University Munich, providing realistic data for motion plannning on roads. It includes models of streets, traffic scenarios and tasks an ego vehicle has to perform. This paper focus on the US highway scenarios and simple models of roads. The algorithm does not pay attention to traffic rules, safety rules or behavior of other traffic participants. It's just optimizing the ego trajectory with the given data. There are no probabilistic predictionsif the traffic participants trajectories. They will be treated as given by the commonroad scenario.
+
+\begin{figure}[h]
+\begin{center}
+\includegraphics{./images/grins.png}
+\end{center}
+\caption{A bitmap graphic loaded from a PNG file}
+\label{Pic2}
+\end{figure}
+
+
+% An example of a floating figure using the graphicx package.
+% Note that \label must occur AFTER (or within) \caption.
+% For figures, \caption should occur after the \includegraphics.
+% Note that IEEEtran v1.7 and later has special internal code that
+% is designed to preserve the operation of \label within \caption
+% even when the captionsoff option is in effect. However, because
+% of issues like this, it may be the safest practice to put all your
+% \label just after \caption rather than within \caption{}.
+%
+% Reminder: the "draftcls" or "draftclsnofoot", not "draft", class
+% option should be used if it is desired that the figures are to be
+% displayed while in draft mode.
+%
+%\begin{figure}[!t]
+%\centering
+%\includegraphics[width=2.5in]{myfigure}
+% where an .eps filename suffix will be assumed under latex, 
+% and a .pdf suffix will be assumed for pdflatex; or what has been declared
+% via \DeclareGraphicsExtensions.
+%\caption{Simulation Results.}
+%\label{fig_sim}
+%\end{figure}
+
+% Note that IEEE typically puts floats only at the top, even when this
+% results in a large percentage of a column being occupied by floats.
+
+
+% An example of a double column floating figure using two subfigures.
+% (The subfig.sty package must be loaded for this to work.)
+% The subfigure \label commands are set within each subfloat command,
+% and the \label for the overall figure must come after \caption.
+% \hfil is used as a separator to get equal spacing.
+% Watch out that the combined width of all the subfigures on a 
+% line do not exceed the text width or a line break will occur.
+%
+%\begin{figure*}[!t]
+%\centering
+%\subfloat[Case I]{\includegraphics[width=2.5in]{box}%
+%\label{fig_first_case}}
+%\hfil
+%\subfloat[Case II]{\includegraphics[width=2.5in]{box}%
+%\label{fig_second_case}}
+%\caption{Simulation results.}
+%\label{fig_sim}
+%\end{figure*}
+%
+% Note that often IEEE papers with subfigures do not employ subfigure
+% captions (using the optional argument to \subfloat[]), but instead will
+% reference/describe all of them (a), (b), etc., within the main caption.
+
+
+% An example of a floating table. Note that, for IEEE style tables, the 
+% \caption command should come BEFORE the table. Table text will default to
+% \footnotesize as IEEE normally uses this smaller font for tables.
+% The \label must come after \caption as always.
+%
+%\begin{table}[!t]
+%% increase table row spacing, adjust to taste
+%\renewcommand{\arraystretch}{1.3}
+% if using array.sty, it might be a good idea to tweak the value of
+% \extrarowheight as needed to properly center the text within the cells
+%\caption{An Example of a Table}
+%\label{table_example}
+%\centering
+%% Some packages, such as MDW tools, offer better commands for making tables
+%% than the plain LaTeX2e tabular which is used here.
+%\begin{tabular}{|c||c|}
+%\hline
+%One & Two\\
+%\hline
+%Three & Four\\
+%\hline
+%\end{tabular}
+%\end{table}
+
+
+% Note that IEEE does not put floats in the very first column - or typically
+% anywhere on the first page for that matter. Also, in-text middle ("here")
+% positioning is not used. Most IEEE journals/conferences use top floats
+% exclusively. Note that, LaTeX2e, unlike IEEE journals/conferences, places
+% footnotes above bottom floats. This can be corrected via the \fnbelowfloat
+% command of the stfloats package.
+
+
+
+\section{Conclusion}
+The conclusion goes here.
+
+
+
+
+% conference papers do not normally have an appendix
+
+
+% use section* for acknowledgement
+% \section*{Acknowledgment}
+% The authors would like to thank...
+
+
+
+
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://www.ctan.org/tex-archive/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{1}
+
+\bibitem{IEEEhowto:kopka}
+H.~Kopka and P.~W. Daly, \emph{A Guide to \LaTeX}, 3rd~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax Harlow, England: Addison-Wesley, 1999.
+
+\end{thebibliography}
+
+
+
+
+% that's all folks
+\end{document}
+
+
+\grid
